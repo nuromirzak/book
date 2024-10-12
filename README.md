@@ -6,4 +6,5 @@
 - [ ] Translate Strapi API to kazakh language
 - [ ] Create a next.js page
 - [ ] Create user role for managing books, which cannot create new entities
-- [ ] Add 
+- [ ] Create a new user role and api token for fetching books in next.js
+- [x] Generate a swagger documentation for Strapi API
