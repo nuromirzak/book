@@ -1,0 +1,15 @@
+{
+  "extends": ["next/core-web-vitals", "next/typescript"],
+  "rules": {
+    "indent": ["error", 2],
+    "arrow-body-style": ["error", "always"],
+    "arrow-parens": ["error", "always"],
+    "curly": ["error", "all"],
+    "eqeqeq": ["error", "always"],
+    "import/no-default-export": "error",
+    "comma-dangle": ["error", "always-multiline"],
+    "semi": ["error", "always"],
+    "no-console": ["error", { "allow": ["warn", "error"] }],
+    "quotes": ["error", "double", { "allowTemplateLiterals": true }]
+  }
+}
