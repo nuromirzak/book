@@ -104,7 +104,8 @@
           "localized": false
         }
       },
-      "type": "integer"
+      "type": "integer",
+      "min": 0
     },
     "depth": {
       "pluginOptions": {
@@ -112,7 +113,8 @@
           "localized": false
         }
       },
-      "type": "integer"
+      "type": "integer",
+      "min": 0
     },
     "review": {
       "type": "component",

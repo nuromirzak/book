@@ -458,13 +458,25 @@ export interface ApiBookBook extends Schema.CollectionType {
         i18n: {
           localized: false;
         };
-      }>;
+      }> &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
     depth: Attribute.Integer &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false;
         };
-      }>;
+      }> &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
     review: Attribute.Component<'common.review', true> &
       Attribute.SetPluginOptions<{
         i18n: {
