@@ -3,8 +3,6 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { BookListResponse } from '../models/BookListResponse';
-import type { BookLocalizationRequest } from '../models/BookLocalizationRequest';
-import type { BookLocalizationResponse } from '../models/BookLocalizationResponse';
 import type { BookRequest } from '../models/BookRequest';
 import type { BookResponse } from '../models/BookResponse';
 import type { CancelablePromise } from '../core/CancelablePromise';
@@ -147,33 +145,6 @@ export class BookService {
             path: {
                 'id': id,
             },
-            errors: {
-                400: `Bad Request`,
-                401: `Unauthorized`,
-                403: `Forbidden`,
-                404: `Not Found`,
-                500: `Internal Server Error`,
-            },
-        });
-    }
-    /**
-     * @param id
-     * @param requestBody
-     * @returns BookLocalizationResponse OK
-     * @throws ApiError
-     */
-    public static postBooksIdLocalizations(
-        id: number,
-        requestBody: BookLocalizationRequest,
-    ): CancelablePromise<BookLocalizationResponse> {
-        return __request(OpenAPI, {
-            method: 'POST',
-            url: '/books/{id}/localizations',
-            path: {
-                'id': id,
-            },
-            body: requestBody,
-            mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
                 401: `Unauthorized`,

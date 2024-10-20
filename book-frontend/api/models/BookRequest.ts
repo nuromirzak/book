@@ -2,22 +2,25 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { CommonReviewComponent } from './CommonReviewComponent';
 export type BookRequest = {
     data: {
         title: string;
-        authorDescription?: string;
-        relevance?: string;
-        annotation?: string;
-        ageRating?: number;
         cover?: (number | string);
+        author?: string;
+        description?: string;
         pages?: number;
         isbn?: string;
-        height?: number;
-        width?: number;
-        depth?: number;
-        review?: Array<CommonReviewComponent>;
+        coverType?: BookRequest.coverType;
+        ageRating?: number;
         locale?: string;
+        localizations?: Array<(number | string)>;
     };
 };
+export namespace BookRequest {
+    export enum coverType {
+        SOFT = 'soft',
+        THIN = 'thin',
+        HARD = 'hard',
+    }
+}
 
