@@ -2,9 +2,9 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { BookListResponseDataItem } from './BookListResponseDataItem';
+import type { Book } from './Book';
 export type BookListResponse = {
-    data?: Array<BookListResponseDataItem>;
+    data?: Array<Book>;
     meta?: {
         pagination?: {
             page?: number;

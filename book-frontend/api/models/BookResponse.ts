@@ -2,9 +2,9 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { BookResponseDataObject } from './BookResponseDataObject';
+import type { Book } from './Book';
 export type BookResponse = {
-    data?: BookResponseDataObject;
+    data?: Book;
     meta?: Record<string, any>;
 };
 
