@@ -1,5 +1,5 @@
 import {Ubuntu} from "next/font/google";
-import {BookService, Book} from "../openapi";
+import {Book, BookService} from "@/openapi";
 import React, {useEffect, useState} from "react";
 import {Dialog, DialogContent} from "@/components/ui/dialog";
 import {Card, CardContent, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
@@ -8,10 +8,19 @@ import {getImageForBook} from "@/lib/getImageForBook";
 import {BookDialog} from "@/components/BookDialog";
 import {Button} from "@/components/ui/button";
 import {BarcodeScannerModal} from "@/components/BarcodeScanner";
-import {useQuery, keepPreviousData} from "@tanstack/react-query";
+import {keepPreviousData, useQuery} from "@tanstack/react-query";
 import {configureOpenAPI} from "@/config";
 import {useRouter} from "next/router";
 import {useErrorNotification} from "@/hooks/use-error-notification";
+import {useToast} from "@/hooks/use-toast";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 
 const font = Ubuntu({subsets: ["latin"], weight: ["400", "700"]});
 
@@ -21,6 +30,7 @@ export default function Home() {
   const router = useRouter();
   const page = Number(router.query.page) || 1;
   const searchQuery = router.query.q ? String(router.query.q) : null;
+  const {toast} = useToast();
 
   useEffect(() => {
     configureOpenAPI();
@@ -68,10 +78,18 @@ export default function Home() {
   });
 
   useEffect(() => {
+    if (!searchQuery) {
+      return;
+    }
     if (searchResults && searchResults.data && searchResults.data.length > 0) {
       setSelectedBook(searchResults.data[0]);
+    } else {
+      toast({
+        variant: "destructive",
+        title: `ISBN коды ${searchQuery} бойынша кітап табылмады`,
+      });
     }
-  }, [searchResults]);
+  }, [searchQuery, searchResults, toast]);
 
   useErrorNotification({
     isError: isBooksError,
@@ -125,10 +143,41 @@ export default function Home() {
           );
         })}
       </div>
+
+      {
+        booksData && booksData.meta && (
+          <Pagination>
+            <PaginationContent>
+              <PaginationItem>
+                <PaginationPrevious href={`?page=${page > 1 ? page - 1 : 1}`}/>
+              </PaginationItem>
+              {
+                Array.from({length: booksData.meta.pagination?.pageCount || 0}).map((_, index) => {
+                  const pageNumber = index + 1;
+                  return (
+                    <PaginationItem key={pageNumber}>
+                      <PaginationLink
+                        href={`?page=${pageNumber}`}
+                        isActive={pageNumber === page}
+                      >
+                        {pageNumber}
+                      </PaginationLink>
+                    </PaginationItem>
+                  );
+                })
+              }
+              <PaginationItem>
+                <PaginationNext href={`?page=${page === booksData.meta.pagination?.pageCount ? page : page + 1}`}/>
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
+        )
+      }
+
       <Dialog open={selectedBook !== null} onOpenChange={() => {
         setSelectedBook(null);
         router.push({
-          query: { ...router.query, q: undefined },
+          query: {...router.query, q: undefined},
         }, undefined, {shallow: true});
       }}>
         <DialogContent className="sm:max-w-[625px]">
