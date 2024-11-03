@@ -1,26 +1,39 @@
+function cleanText(input: string): string {
+  return input.replace(/\s+/g, ' ').trim();
+}
+
+function normalizeISBN(isbn: string): string {
+  return isbn.replace(/\D/g, '');
+}
+
 function removeLineBreaks(str: Record<string, any>) {
   Object.keys(str).forEach((key) => {
     if (typeof str[key] === 'string') {
-      str[key] = str[key].replace(/(\r\n|\n|\r)/gm, ' ');
+      str[key] = cleanText(str[key]);
     }
   });
 }
 
+function normalizeBookData(data: Record<string, any>) {
+  removeLineBreaks(data);
+  if (data.isbn) {
+    data.isbn = normalizeISBN(data.isbn);
+  }
+  if (!data.cover) {
+    data.cover = {
+      id: 1,
+    }
+  }
+}
+
 // TODO: Also handle beforeCreateMany, afterUpdateMany
-// TODO: Remove dashes from the ISBN
 export default {
   beforeCreate(event: any) {
     const {data} = event.params;
-    console.log('beforeCreate', data);
-    removeLineBreaks(data);
-    if (!data.cover) {
-      data.cover = {
-        id: 2,
-      }
-    }
+    normalizeBookData(data);
   },
   beforeUpdate(event: any) {
     const {data} = event.params;
-    removeLineBreaks(data);
+    normalizeBookData(data);
   },
 }

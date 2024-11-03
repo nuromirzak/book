@@ -34,17 +34,11 @@ export function BookDialog({selectedBook}: BookDialogProps) {
               />
             </div>
             <div>
-              {selectedBook.author && (
+              {selectedBook.author && selectedBook.author !== "undefined" && (
                 <p className="font-semibold">Автор: {selectedBook.author}</p>
-              )}
-              {selectedBook.ageRating && (
-                <p>Жас Ерекшелігі: {selectedBook.ageRating}+</p>
               )}
               {selectedBook.pages && (
                 <p>Бет Саны: {selectedBook.pages} бет</p>
-              )}
-              {selectedBook.coverType && (
-                <p>Қақпақ түрі: {selectedBook.coverType}</p>
               )}
               {selectedBook.isbn && (
                 <p>ISBN: {selectedBook.isbn}</p>

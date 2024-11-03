@@ -132,4 +132,3 @@ build
 
 # custom
 src/extensions/documentation/*
-.env.production

@@ -4,7 +4,7 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: "book-29ut9zd7c8yip54s2lbc.s3.eu-central-1.amazonaws.com",
+        hostname: process.env.S3_URL,
         protocol: "https",
       },
     ],

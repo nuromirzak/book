@@ -10,17 +10,8 @@ export type BookRequest = {
         description?: string;
         pages?: number;
         isbn?: string;
-        coverType?: BookRequest.coverType;
-        ageRating?: number;
         locale?: string;
         localizations?: Array<(number | string)>;
     };
 };
-export namespace BookRequest {
-    export enum coverType {
-        SOFT = 'soft',
-        THIN = 'thin',
-        HARD = 'hard',
-    }
-}
 

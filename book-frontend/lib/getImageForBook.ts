@@ -15,10 +15,11 @@ export const getImageForBook = (book: Book): ImageInformation => {
   if (!cover || !width || !height) {
     const newWidth = 400;
     const newHeight = 600;
+    const defaultCover = "default_cover.webp";
     return {
       height: newHeight,
       width: newWidth,
-      url: `https://via.placeholder.com/${newWidth}x${newHeight}.png?text=No+Cover`,
+      url: `/${defaultCover}`,
     };
   }
 

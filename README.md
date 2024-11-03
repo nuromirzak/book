@@ -10,6 +10,8 @@
 - [x] Generate a swagger documentation for Strapi API
 - [ ] Implement a custom middleware for compressing images
 - [x] Added a code generation for Strapi API
-- [ ] Add yandex/google search API
-- [ ] Add parsers for meloman.kz, flip.kz, kitapal.kz, kitap.kz
+- [x] Add yandex/google search API
+- [x] Add parsers for meloman.kz, flip.kz, kitapal.kz, kitap.kz
 - [ ] Add rate limiter
+- [ ] Add fastify service for parsing
+- [x] Move data fetching to client side

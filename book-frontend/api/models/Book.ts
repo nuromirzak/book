@@ -204,8 +204,6 @@ export type Book = {
     description?: string;
     pages?: number;
     isbn?: string;
-    coverType?: Book.coverType;
-    ageRating?: number;
     createdAt?: string;
     updatedAt?: string;
     publishedAt?: string;
@@ -269,8 +267,6 @@ export type Book = {
         description?: string;
         pages?: number;
         isbn?: string;
-        coverType?: 'soft' | 'thin' | 'hard';
-        ageRating?: number;
         createdAt?: string;
         updatedAt?: string;
         publishedAt?: string;
@@ -289,11 +285,4 @@ export type Book = {
         }>;
     }>;
 };
-export namespace Book {
-    export enum coverType {
-        SOFT = 'soft',
-        THIN = 'thin',
-        HARD = 'hard',
-    }
-}
 

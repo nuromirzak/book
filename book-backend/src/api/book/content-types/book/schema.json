@@ -36,19 +36,6 @@
     },
     "isbn": {
       "type": "string"
-    },
-    "coverType": {
-      "type": "enumeration",
-      "enum": [
-        "soft",
-        "thin",
-        "hard"
-      ]
-    },
-    "ageRating": {
-      "type": "integer",
-      "max": 100,
-      "min": 0
     }
   }
 }

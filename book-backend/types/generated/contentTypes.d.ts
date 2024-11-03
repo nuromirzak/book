@@ -24,15 +24,6 @@ export interface ApiBookBook extends Struct.CollectionTypeSchema {
         number
       >;
     isbn: Schema.Attribute.String;
-    coverType: Schema.Attribute.Enumeration<['soft', 'thin', 'hard']>;
-    ageRating: Schema.Attribute.Integer &
-      Schema.Attribute.SetMinMax<
-        {
-          min: 0;
-          max: 100;
-        },
-        number
-      >;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
