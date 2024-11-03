@@ -1,4 +1,4 @@
-import {Book} from "@/api";
+import {Book} from "../openapi";
 
 interface ImageInformation {
   height: number;

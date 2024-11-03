@@ -1,4 +1,4 @@
-import {Book} from "@/api";
+import {Book} from "../openapi";
 import {DialogHeader, DialogTitle} from "@/components/ui/dialog";
 import Image from "next/image";
 import {Separator} from "@/components/ui/separator";

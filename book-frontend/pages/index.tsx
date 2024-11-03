@@ -1,5 +1,5 @@
 import {Ubuntu} from "next/font/google";
-import {BookService, Book} from "@/api";
+import {BookService, Book} from "../openapi";
 import React, {useEffect, useState} from "react";
 import {Dialog, DialogContent} from "@/components/ui/dialog";
 import {Card, CardContent, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
